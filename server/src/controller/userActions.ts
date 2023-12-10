@@ -7,7 +7,7 @@ import logOut from '../routes/logOut';
 const router = express.Router();
 
 router.post("/signup", signUp)
-router.post("login", logIn)
-router.post("logout", logOut)
+router.post("/login", logIn)
+router.post("/logout", logOut)
 
 export default router;

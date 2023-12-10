@@ -32,7 +32,7 @@ const logIn = (req: Request, res: Response) => {
             }
         });
 
-        authenticationMiddleware(req, res, () => { });
+        authenticationMiddleware(req, res);
 
     } catch (error) {
         return res.status(500).json({ success: false, message: 'Internal server error' });
