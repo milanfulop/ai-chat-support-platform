@@ -14,6 +14,13 @@ app.get("/api/check-auth", (req: Request, res: Response) => {
     }
 });
 
+app.get("/api/get-user-data", (req: Request, res: Response) => {
+    console.log("szar")
+    if (req.isAuthenticated()) {
+        res.json(req.user);
+    }
+})
+
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
     console.log("app is running on port", port);

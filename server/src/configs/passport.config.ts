@@ -1,7 +1,7 @@
 import passport from 'passport';
 
 import app from './app.config';
-import User from './db.config';
+import { User } from './db.config';
 
 app.use(passport.initialize());
 app.use(passport.session());
