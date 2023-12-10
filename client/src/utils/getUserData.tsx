@@ -26,7 +26,7 @@ const GetUserData = () => {
                     setUserData(_userData);
                 }
             } catch (error) {
-                console.error('Error checking authentication:', error);
+                console.error('Error getting user data:', error);
             }
         };
 

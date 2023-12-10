@@ -3,8 +3,10 @@ import { Request, Response } from 'express';
 
 import app from './src/configs/app.config';
 import userActions from './src/controller/userActions'
+import getUserData from './src/controller/getUserData';
 
 app.use('/api', userActions);
+app.use('/api', getUserData)
 
 app.get("/api/check-auth", (req: Request, res: Response) => {
     if (req.isAuthenticated()) {
@@ -13,13 +15,6 @@ app.get("/api/check-auth", (req: Request, res: Response) => {
         res.json({ isAuthenticated: false, user: null });
     }
 });
-
-app.get("/api/get-user-data", (req: Request, res: Response) => {
-    console.log("szar")
-    if (req.isAuthenticated()) {
-        res.json(req.user);
-    }
-})
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
