@@ -18,7 +18,6 @@ const ApiSettings = ({ apiKey }: { apiKey: string }) => {
     };
 
     useEffect(() => {
-        // This will be called whenever allowedSites changes
         editApiData("allowedSites", allowedSites);
     }, [allowedSites, apiKey]);
 
