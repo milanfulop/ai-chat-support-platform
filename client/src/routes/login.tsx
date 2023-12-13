@@ -1,7 +1,10 @@
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 
 export default function Login() {
+    const navigate = useNavigate();
+
     const [email, setEmail] = useState<string>("");
     const [password, setPassword] = useState<string>("");
     const [loading, setLoading] = useState<boolean>(false);
@@ -25,9 +28,7 @@ export default function Login() {
                 withCredentials: true
             });
 
-
-            console.log(response.data);
-            // Redirect or perform actions after successful login
+            navigate('/');
         } catch (error: any) {
             console.error("Login failed:", error.response.data);
             setError("Invalid email or password");

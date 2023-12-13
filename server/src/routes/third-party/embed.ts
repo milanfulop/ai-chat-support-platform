@@ -8,7 +8,6 @@ const embed = async (req: Request, res: Response) => {
         const apiRecord = await API.findOne({ apiKey: botId });
 
         if (apiRecord) {
-            const userId = apiRecord.userId;
             const allowedSites = apiRecord.allowedSites;
 
             const referringUrl = req.get('Referer');

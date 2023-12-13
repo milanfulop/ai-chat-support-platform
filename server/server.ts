@@ -4,12 +4,12 @@ import { Request, Response } from 'express';
 import app from './src/configs/app.config';
 
 import userActions from './src/controller/userActions'
-import getUserData from './src/controller/getUserData';
+import getData from './src/controller/getData';
 import apiActions from './src/controller/apiActions';
 
 app.use('/api', userActions);
 app.use('/api', apiActions);
-app.use('/api', getUserData)
+app.use('/api', getData)
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
