@@ -4,12 +4,14 @@ interface IAPI extends mongoose.Document {
     apiKey: String
     userId: String
     allowedSites: [String]
+    context: String
 }
 
 const apiSchema = new Schema<IAPI>({
     apiKey: String,
     userId: String,
-    allowedSites: [String]
+    allowedSites: [String],
+    context: String
 });
 
 export { apiSchema, IAPI };

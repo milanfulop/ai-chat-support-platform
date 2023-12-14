@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { API } from '../../configs/db.config';
+import code from './chatboxCode';
 
 const embed = async (req: Request, res: Response) => {
     const botId = req.query.botId;
@@ -23,18 +24,9 @@ const embed = async (req: Request, res: Response) => {
 
             const referringDomain = referringUrl ? getDomain(referringUrl) : null;
             if (referringDomain && allowedSites.includes(referringDomain)) {
-                const chatboxCode = `
-                    const chatboxElement = document.createElement('div');
-
-                    chatboxElement.innerHTML = '<p>content</p>';
-                    chatboxElement.style.color = 'red';
-
-                    document.body.appendChild(chatboxElement);
-                `;
-
                 res.setHeader('Content-Type', 'text/javascript');
 
-                res.send(chatboxCode);
+                res.send(code);
             }
             else {
                 const chatboxCode = `

@@ -7,6 +7,8 @@ const ApiSettings = ({ apiKey }: { apiKey: string }) => {
     const [allowedSites, setAllowedSites] = useState<String[]>([]);
     const [allowedSiteInput, setAllowedSiteInput] = useState<string>("");
 
+    const [contextInput, setContextInput] = useState<string>("");
+
     const apiData: IAPI | undefined = GetApiData({ apiKey });
     useEffect(() => {
         if (apiData) {
@@ -23,10 +25,18 @@ const ApiSettings = ({ apiKey }: { apiKey: string }) => {
         setAllowedSiteInput(event.target.value);
     };
 
+    const onContextInput = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+        setContextInput(event.currentTarget.value);
+    }
+
     const sendAllowedSiteInput = () => {
         setAllowedSites(oldSites => [...oldSites, allowedSiteInput]);
+        setAllowedSiteInput("");
     };
 
+    const sendContext = () => {
+        editApiData("context", contextInput);
+    }
     useEffect(() => {
         if (allowedSites.length != 0 && allowedSites != apiData?.allowedSites) {
             editApiData("allowedSites", allowedSites);
@@ -36,6 +46,13 @@ const ApiSettings = ({ apiKey }: { apiKey: string }) => {
     return (
         <div>
             <p>{apiKey}</p>
+
+            <div>
+                <p>Context</p>
+                <textarea onChange={onContextInput} value={contextInput} />
+                <button onClick={sendContext}>Save</button>
+            </div>
+
             <div>
                 <p>Allowed websites</p>
                 <ul>
@@ -44,7 +61,7 @@ const ApiSettings = ({ apiKey }: { apiKey: string }) => {
                     ))}
                 </ul>
                 <input onChange={onAllowedSiteInput} type="text" value={allowedSiteInput} />
-                <button onClick={() => { sendAllowedSiteInput(); setAllowedSiteInput(""); }}>Add Site</button>
+                <button onClick={sendAllowedSiteInput}>Add Site</button>
             </div>
         </div>
     );
