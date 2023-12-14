@@ -1,5 +1,7 @@
 import { Request, Response } from "express";
 const sendMessage = (req: Request, res: Response) => {
-    console.log(req.body.chatHistory)
+    console.log(req.body)
+
+    res.json({ message: "xd" });
 }
 export default sendMessage;
