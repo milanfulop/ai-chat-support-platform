@@ -65,7 +65,7 @@ const code =
     // Function to call the AI endpoint with the user's message
     async function callAi() {
         try {
-            const response = await fetch('http://localhost:5000/api/send-chat-message', {
+            const response = await fetch('http://localhost:5001/api/send-chat-message', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json', // Set the Content-Type header
