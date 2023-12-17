@@ -21,6 +21,17 @@ const ApiSettings = ({ apiKey }: { apiKey: string }) => {
         axios.post("http://localhost:5000/api/edit-api-data", { query, newData, apiKey })
     };
 
+    //editing context data requires a bit more complex saving into the db
+    const editContextData = (query: string, newData: any) => {
+        axios.post("http://localhost:5000/api/edit-context-data", { query, newData, apiKey })
+            .then(() => {
+                console.log("saved");
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    };
+
     const onAllowedSiteInput = (event: React.ChangeEvent<HTMLInputElement>) => {
         setAllowedSiteInput(event.target.value);
     };
@@ -35,7 +46,7 @@ const ApiSettings = ({ apiKey }: { apiKey: string }) => {
     };
 
     const sendContext = () => {
-        editApiData("context", contextInput);
+        editContextData("context", contextInput);
     }
     useEffect(() => {
         if (allowedSites.length != 0 && allowedSites != apiData?.allowedSites) {

@@ -32,6 +32,9 @@ const code =
     
     const chatMessages = [];
     
+    const url = new URL(document.currentScript.getAttribute('src'));
+    const scriptParams = Object.fromEntries(url.searchParams)
+
     // Add an event listener to the button to send messages
     sendButton.addEventListener('click', () => {
         const messageText = userInput.value.trim();
@@ -57,6 +60,11 @@ const code =
         messageList.appendChild(messageItem);
 
         chatMessages.push(\`\${sender}: \${content}\`)
+
+        //max length of the chat history
+        if(chatMessages.length > 4) {
+            chatMessages.shift();
+        }
     
         // Scroll to the bottom of the message list to show the latest message
         messageList.scrollTop = messageList.scrollHeight;
@@ -65,7 +73,7 @@ const code =
     // Function to call the AI endpoint with the user's message
     async function callAi() {
         try {
-            const response = await fetch('http://localhost:5001/api/send-chat-message', {
+            const response = await fetch('http://localhost:5001/api/send-chat-message?botId='+scriptParams.botId, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json', // Set the Content-Type header
