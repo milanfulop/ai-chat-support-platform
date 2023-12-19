@@ -9,11 +9,16 @@ const ApiSettings = ({ apiKey }: { apiKey: string }) => {
 
     const [contextInput, setContextInput] = useState<string>("");
 
+    const [nameInput, setNameInput] = useState<string>("");
+
     const apiData: IAPI | undefined = GetApiData({ apiKey });
     useEffect(() => {
         if (apiData) {
             setAllowedSites(apiData.allowedSites)
-            console.log(apiData.allowedSites)
+            setNameInput(apiData.botName)
+            apiData.context.forEach(content => {
+                setContextInput(prevContextInput => prevContextInput + "\n" + content.pageContent);
+            });
         }
     }, [apiData])
 
@@ -36,15 +41,14 @@ const ApiSettings = ({ apiKey }: { apiKey: string }) => {
         setAllowedSiteInput(event.target.value);
     };
 
-    const onContextInput = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-        setContextInput(event.currentTarget.value);
-    }
-
     const sendAllowedSiteInput = () => {
         setAllowedSites(oldSites => [...oldSites, allowedSiteInput]);
         setAllowedSiteInput("");
     };
 
+    const onContextInput = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+        setContextInput(event.currentTarget.value);
+    }
     const sendContext = () => {
         editContextData("context", contextInput);
     }
@@ -54,6 +58,13 @@ const ApiSettings = ({ apiKey }: { apiKey: string }) => {
         }
     }, [allowedSites]);
 
+    const onNameInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setNameInput(event.currentTarget.value);
+    }
+    const sendName = () => {
+        editApiData("botName", nameInput)
+    }
+
     return (
         <div>
             <p>{apiKey}</p>
@@ -62,6 +73,12 @@ const ApiSettings = ({ apiKey }: { apiKey: string }) => {
                 <p>Context</p>
                 <textarea onChange={onContextInput} value={contextInput} />
                 <button onClick={sendContext}>Save</button>
+            </div>
+
+            <div>
+                <p>Robot name</p>
+                <input type="text" onChange={onNameInput} value={nameInput} />
+                <button onClick={sendName}>Save</button>
             </div>
 
             <div>

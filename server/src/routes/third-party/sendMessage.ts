@@ -30,6 +30,7 @@ const sendMessage = async (req: Request, res: Response) => {
         },
     }));
 
+    const botName = document?.botName;
 
     const embeddings = new OpenAIEmbeddings();
     const vectorStore = await FaissStore.fromDocuments(contextArray, embeddings);
@@ -45,7 +46,7 @@ const sendMessage = async (req: Request, res: Response) => {
         query: prompt,
     });
 
-    res.json({ message: response.text });
+    res.json({ botName, message: response.text });
 }
 
 export default sendMessage;
