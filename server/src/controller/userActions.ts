@@ -1,23 +1,19 @@
+/*
+    Controls the actions that the users can emit.
+*/
+
 import express from 'express';
-import cors from 'cors';
 
-import signUp from '../routes/signUp';
-import logIn from '../routes/logIn';
-import logOut from '../routes/logOut';
-import createNewApi from '../routes/createNewApi';
-import editApiData from '../routes/editApiData';
-import editContextData from '../routes/editContextData';
+import signUp from '../routes/account/signUp';
+import logIn from '../routes/account/logIn';
+import logOut from '../routes/account/logOut';
+import createNewApi from '../routes/data/createNewApi';
+import editApiData from '../routes/data/editApiData';
+import editContextData from '../routes/data/editContextData';
 
-import checkAuth from '../routes/checkAuth';
+import checkAuth from '../routes/account/checkAuth';
 
 const router = express.Router();
-
-const corsOptions = {
-    origin: process.env.ORIGIN || 'http://localhost:3000',
-    credentials: true,
-};
-
-router.use(cors(corsOptions));
 
 router.post("/signup", signUp);
 router.post("/login", logIn);

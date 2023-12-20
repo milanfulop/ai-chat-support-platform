@@ -1,3 +1,8 @@
+/*
+    This express app is responsible for every call from third parties (clients).
+    I've made a new app for this because it uses different cors settings.
+*/
+
 import express from 'express';
 import cookieParser from 'cookie-parser';
 import session from 'express-session';
@@ -7,7 +12,7 @@ const api = express();
 
 api.use(cors({
     origin: '*',
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    methods: 'GET,HEAD,PUT,PATCH,POST',
     credentials: true,
     optionsSuccessStatus: 204,
 }));

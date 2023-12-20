@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import GetApiData from "../utils/getApiData";
-import IAPI from "../types/Api";
+import GetApiData from "../../utils/getApiData";
+import IAPI from "../../types/Api";
 
 const ApiSettings = ({ apiKey }: { apiKey: string }) => {
     const [allowedSites, setAllowedSites] = useState<String[]>([]);
@@ -40,9 +40,13 @@ const ApiSettings = ({ apiKey }: { apiKey: string }) => {
     const onAllowedSiteInput = (event: React.ChangeEvent<HTMLInputElement>) => {
         setAllowedSiteInput(event.target.value);
     };
-
     const sendAllowedSiteInput = () => {
         setAllowedSites(oldSites => [...oldSites, allowedSiteInput]);
+
+        if (allowedSiteInput.length !== 0 && !allowedSites.includes(allowedSiteInput)) {
+            editApiData("allowedSites", [...allowedSites, allowedSiteInput]);
+        }
+
         setAllowedSiteInput("");
     };
 
@@ -52,11 +56,6 @@ const ApiSettings = ({ apiKey }: { apiKey: string }) => {
     const sendContext = () => {
         editContextData("context", contextInput);
     }
-    useEffect(() => {
-        if (allowedSites.length != 0 && allowedSites != apiData?.allowedSites) {
-            editApiData("allowedSites", allowedSites);
-        }
-    }, [allowedSites]);
 
     const onNameInput = (event: React.ChangeEvent<HTMLInputElement>) => {
         setNameInput(event.currentTarget.value);

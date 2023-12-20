@@ -1,36 +1,38 @@
 import { Request, Response } from "express";
-import { API } from "../../configs/db.config";
-import { IAPI } from "../../models/Api";
+import { Bot } from "../../configs/db.config";
+import { BotData } from "../../models/Bot";
 
-import { Document } from "langchain/document";
 import { OpenAIEmbeddings } from "langchain/embeddings/openai";
 import { FaissStore } from "langchain/vectorstores/faiss";
 
 import { OpenAI } from "langchain/llms/openai";
 import { RetrievalQAChain, loadQAStuffChain } from "langchain/chains";
 
-const sendMessage = async (req: Request, res: Response) => {
+type Document<T> = {
+    pageContent: T;
+    metadata: {
+        loc: object;
+    };
+};
 
-    const prompt = req.body.chatHistory[req.body.chatHistory.length - 1];
+const sendMessage = async (req: Request, res: Response) => {
+    const prompt = "Answer this in first person: " + req.body.chatHistory[req.body.chatHistory.length - 1];
+
     const botId = req.query.botId;
 
-    const document: IAPI | null = await API.findOne({ apiKey: botId });
+    const document: BotData | null = await Bot.findOne({ apiKey: botId });
+    if (!document)
+        return "Bot not found";
 
-    type Document<T> = {
-        pageContent: T;
+    //imports the context from the database
+    const contextArray: Document<string>[] = (document.context || []).map(context => ({
+        pageContent: context.pageContent,
         metadata: {
-            loc: object;
-        };
-    };
-
-    const contextArray: Document<string>[] = (document?.context || []).map(item => ({
-        pageContent: item.pageContent,
-        metadata: {
-            loc: item.metadata.loc,
+            loc: context.metadata.loc,
         },
     }));
 
-    const botName = document?.botName;
+    const botName = document.botName;
 
     const embeddings = new OpenAIEmbeddings();
     const vectorStore = await FaissStore.fromDocuments(contextArray, embeddings);

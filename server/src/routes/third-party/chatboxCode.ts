@@ -1,3 +1,7 @@
+/*
+    This is the code that is being sent to the third party site.
+*/
+
 const code = `
     // Create the chatbox container
     const chatboxElement = document.createElement('div');

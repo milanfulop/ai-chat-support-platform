@@ -1,35 +1,32 @@
+/*
+    This controls the embeddings for the third-party sites.
+    Also checks if the current site's domain is allowed. If it isn't, it'll send an error message.
+*/
+
 import { Request, Response } from 'express';
-import { API } from '../../configs/db.config';
+import { Bot } from '../../configs/db.config';
 import code from './chatboxCode';
 
 const embed = async (req: Request, res: Response) => {
     const botId = req.query.botId;
 
     try {
-        const apiRecord = await API.findOne({ apiKey: botId });
+        const apiRecord = await Bot.findOne({ apiKey: botId });
 
         if (apiRecord) {
             const allowedSites = apiRecord.allowedSites;
 
-            const referringUrl = req.get('Referer');
+            const url = req.get('Referer');
 
-            const getDomain = (url: string) => {
-                const match = url.match(/:\/\/(www[0-9]?\.)?(.[^/:]+)/i);
-                if (match != null && match.length > 2 && typeof match[2] === 'string' && match[2].length > 0) {
-                    return match[2];
-                } else {
-                    return null;
-                }
-            };
+            //finds the domain of the site
+            const domain = url ? getDomain(url) : null;
 
-            const referringDomain = referringUrl ? getDomain(referringUrl) : null;
-            if (referringDomain && allowedSites.includes(referringDomain)) {
+            if (isAllowed(allowedSites, domain)) {
                 res.setHeader('Content-Type', 'text/javascript');
-
                 res.send(code);
             }
             else {
-                const chatboxCode = `
+                const errorCode = `
                     const chatboxElement = document.createElement('div');
 
                     chatboxElement.innerHTML = '<p>not allowed</p>';
@@ -39,16 +36,28 @@ const embed = async (req: Request, res: Response) => {
                 `;
 
                 res.setHeader('Content-Type', 'text/javascript');
-
-                res.send(chatboxCode);
+                res.send(errorCode);
             }
 
         } else {
-            console.log('API key not found');
+            console.log('Bot key is not found');
         }
     } catch (error) {
         console.error('Error finding user by API key:', error);
     }
 };
+
+const getDomain = (url: string) => {
+    const match = url.match(/:\/\/(www[0-9]?\.)?(.[^/:]+)/i);
+    if (match != null && match.length > 2 && typeof match[2] === 'string' && match[2].length > 0) {
+        return match[2];
+    } else {
+        return null;
+    }
+};
+
+function isAllowed(allowedSites: [string], domain: string | null) {
+    return domain && allowedSites.includes(domain)
+}
 
 export default embed;

@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import passport from '../../src/configs/passport.config';
+import passport from '../../configs/passport.config';
 
 const logIn = (req: Request, res: Response) => {
     try {

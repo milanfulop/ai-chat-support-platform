@@ -1,8 +1,8 @@
 import { useState } from 'react';
 
-import checkAuthentication from '../utils/checkAuthentication';
-import GetUserData from '../utils/getUserData';
-import createNewApi from '../utils/createNewApi';
+import checkAuthentication from '../../utils/checkAuthentication';
+import GetUserData from '../../utils/getUserData';
+import createNewApi from '../../utils/createNewApi';
 
 import ApiSettings from './apiSettings';
 

@@ -6,7 +6,7 @@ import './index.css';
 import Login from './routes/login';
 import Signup from './routes/signup';
 import Home from './routes/home';
-import Dashboard from './routes/dashboard'
+import Dashboard from './routes/dashboard/dashboard'
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

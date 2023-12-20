@@ -1,6 +1,10 @@
+/*
+    Often referred to as: API, Bot, ChatBot, or Chat.
+*/
+
 import mongoose, { Schema } from 'mongoose';
 
-interface IAPI extends mongoose.Document {
+interface BotData extends mongoose.Document {
     apiKey: string
     userId: string
     botName: string
@@ -13,7 +17,7 @@ interface IAPI extends mongoose.Document {
     }];
 }
 
-const apiSchema = new Schema<IAPI>({
+const botSchema = new Schema<BotData>({
     apiKey: String,
     userId: String,
     botName: {
@@ -29,4 +33,4 @@ const apiSchema = new Schema<IAPI>({
     }],
 });
 
-export { apiSchema, IAPI };
+export { botSchema, BotData };

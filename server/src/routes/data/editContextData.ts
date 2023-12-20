@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { API } from "../configs/db.config";
+import { Bot } from "../../configs/db.config";
 
 import { Document } from "langchain/document";
 import { CharacterTextSplitter } from "langchain/text_splitter";
@@ -15,7 +15,7 @@ const editContextData = async (req: Request, res: Response) => {
     });
 
     const documents = await splitter.splitDocuments([docs]);
-    await API.findOneAndUpdate({ apiKey: apiKey }, { context: documents })
+    await Bot.findOneAndUpdate({ apiKey: apiKey }, { context: documents })
 }
 
 export default editContextData;

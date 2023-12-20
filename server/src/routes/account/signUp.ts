@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { User } from '../configs/db.config';
+import { User } from '../../configs/db.config';
 
 const signUp = (req: Request, res: Response) => {
     const { email, password } = req.body;

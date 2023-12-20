@@ -1,10 +1,10 @@
 import { Request, Response } from 'express';
-import { API } from '../configs/db.config';
+import { Bot } from '../../configs/db.config';
 
 const sendApiData = async (req: Request, res: Response) => {
     const { apiKey } = req.body;
     try {
-        const apiRecord = await API.findOne({ apiKey });
+        const apiRecord = await Bot.findOne({ apiKey });
 
         if (apiRecord) {
             res.json(apiRecord);
