@@ -20,7 +20,7 @@ const sendMessage = async (req: Request, res: Response) => {
 
     const botId = req.query.botId;
 
-    const document: BotData | null = await Bot.findOne({ apiKey: botId });
+    const document: BotData | null = await Bot.findOne({ botKey: botId });
     if (!document)
         return "Bot not found";
 

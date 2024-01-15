@@ -15,7 +15,7 @@ const editContextData = async (req: Request, res: Response) => {
     });
 
     const documents = await splitter.splitDocuments([docs]);
-    await Bot.findOneAndUpdate({ apiKey: apiKey }, { context: documents })
+    await Bot.findOneAndUpdate({ botKey: apiKey }, { context: documents })
 }
 
 export default editContextData;

@@ -4,7 +4,7 @@ import { Bot } from '../../configs/db.config';
 const sendApiData = async (req: Request, res: Response) => {
     const { apiKey } = req.body;
     try {
-        const apiRecord = await Bot.findOne({ apiKey });
+        const apiRecord = await Bot.findOne({ botKey: apiKey });
 
         if (apiRecord) {
             res.json(apiRecord);

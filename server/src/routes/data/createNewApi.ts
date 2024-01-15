@@ -24,7 +24,7 @@ const createNewApi = (req: Request, res: Response) => {
                 { new: true }
             ).then((updatedUser) => {
                 //console.log("API key created and linked to user ID:", userId);
-                res.json({ apiKey: apiKey, user: updatedUser });
+                res.json({ bothKey: apiKey, user: updatedUser });
             }).catch((error) => {
                 //console.error("Error updating user with API key:", error);
                 res.status(500).json({ error: "Internal Server Error" });

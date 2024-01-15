@@ -7,7 +7,7 @@ const editApiData = async (req: Request, res: Response) => {
     const updateObject: Record<string, any> = {};
     updateObject[query] = newData;
 
-    await Bot.findOneAndUpdate({ apiKey: apiKey }, updateObject, { new: true })
+    await Bot.findOneAndUpdate({ botKey: apiKey }, updateObject, { new: true })
 }
 
 export default editApiData;

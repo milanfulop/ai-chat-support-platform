@@ -11,7 +11,7 @@ const embed = async (req: Request, res: Response) => {
     const botId = req.query.botId;
 
     try {
-        const apiRecord = await Bot.findOne({ apiKey: botId });
+        const apiRecord = await Bot.findOne({ botKey: botId });
 
         if (apiRecord) {
             const allowedSites = apiRecord.allowedSites;
