@@ -9,6 +9,6 @@ mongoose.connect(process.env.DB_URI || 'mongodb://127.0.0.1:27017/ai-chat-suppor
 userSchema.plugin(passportLocalMongoose, { usernameField: 'email' });
 
 const User = model<IUser>("User", userSchema);
-const Bot = model<BotData>("API", botSchema)
+const Bot = model<BotData>("Bots", botSchema)
 
 export { User, Bot }

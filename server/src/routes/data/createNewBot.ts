@@ -16,7 +16,7 @@ const createNewBot = (req: Request, res: Response) => {
         new Bot(newBot).save().then(() => {
             User.findOneAndUpdate(
                 { _id: userId },
-                { $push: { apis: botKey } },
+                { $push: { bots: botKey } },
                 { new: true }
             ).then((updatedUser) => {
                 //console.log("BOT key created and linked to user ID:", userId);

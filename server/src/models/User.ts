@@ -3,7 +3,7 @@ import mongoose, { Schema } from 'mongoose';
 interface IUser extends mongoose.Document {
     email: string;
     password: string;
-    apis: {
+    bots: {
         type: [String],
         default: [],
     },
@@ -12,7 +12,7 @@ interface IUser extends mongoose.Document {
 const userSchema = new Schema<IUser>({
     email: String,
     password: String,
-    apis: {
+    bots: {
         type: [String],
         default: [],
     },
