@@ -1,5 +1,5 @@
 interface IAPI {
-    apiKey: string
+    botKey: string
     userId: string
     allowedSites: [string]
     botName: string

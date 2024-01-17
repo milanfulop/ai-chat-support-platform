@@ -11,10 +11,10 @@ const embed = async (req: Request, res: Response) => {
     const botId = req.query.botId;
 
     try {
-        const apiRecord = await Bot.findOne({ botKey: botId });
+        const botRecord = await Bot.findOne({ botKey: botId });
 
-        if (apiRecord) {
-            const allowedSites = apiRecord.allowedSites;
+        if (botRecord) {
+            const allowedSites = botRecord.allowedSites;
 
             const url = req.get('Referer');
 
@@ -43,7 +43,7 @@ const embed = async (req: Request, res: Response) => {
             console.log('Bot key is not found');
         }
     } catch (error) {
-        console.error('Error finding user by API key:', error);
+        console.error('Error finding user by BOT key:', error);
     }
 };
 

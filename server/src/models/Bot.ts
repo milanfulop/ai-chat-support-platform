@@ -5,7 +5,7 @@
 import mongoose, { Schema } from 'mongoose';
 
 interface BotData extends mongoose.Document {
-    apiKey: string
+    botKey: string
     userId: string
     botName: string
     allowedSites: [string]
@@ -18,7 +18,7 @@ interface BotData extends mongoose.Document {
 }
 
 const botSchema = new Schema<BotData>({
-    apiKey: String,
+    botKey: String,
     userId: String,
     botName: {
         type: String,

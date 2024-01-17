@@ -20,7 +20,7 @@ const GetUserData = () => {
                     const _userData: IUser = {
                         id: data._id,
                         email: data.email,
-                        apis: data.apis
+                        bots: data.apis
                     }
 
                     setUserData(_userData);

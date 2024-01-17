@@ -2,9 +2,9 @@ import { useState } from 'react';
 
 import checkAuthentication from '../../utils/checkAuthentication';
 import GetUserData from '../../utils/getUserData';
-import createNewApi from '../../utils/createNewApi';
+import createNewBot from '../../utils/createNewBot';
 
-import ApiSettings from './apiSettings';
+import ApiSettings from './botSettings';
 
 const Dashboard = () => {
     //if this is true, the rest of the dashboard will disappear
@@ -18,12 +18,12 @@ const Dashboard = () => {
         return (
             <div>
                 <h1>dahsboard {isAuthenticated ? "authed" : "unauthed"}</h1>
-                <button onClick={createNewApi}>xd</button>
+                <button onClick={createNewBot}>xd</button>
 
                 {userData ? (
                     <div>
                         <ul>
-                            {userData.apis.map((data, index) => (
+                            {userData.bots.map((data, index) => (
                                 <li key={index}>
                                     <p onClick={() => {
                                         setEditingApiSettings(true);
@@ -41,7 +41,7 @@ const Dashboard = () => {
     }
     else {
         return (
-            <ApiSettings apiKey={editingApiKey} />
+            <ApiSettings botKey={editingApiKey} />
         )
     }
 };

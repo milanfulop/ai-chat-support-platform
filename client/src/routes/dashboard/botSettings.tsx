@@ -1,9 +1,9 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import GetApiData from "../../utils/getApiData";
-import IAPI from "../../types/Api";
+import GetApiData from "../../utils/getBotData";
+import IAPI from "../../types/Bot";
 
-const ApiSettings = ({ apiKey }: { apiKey: string }) => {
+const ApiSettings = ({ botKey }: { botKey: string }) => {
     const [allowedSites, setAllowedSites] = useState<String[]>([]);
     const [allowedSiteInput, setAllowedSiteInput] = useState<string>("");
 
@@ -11,7 +11,7 @@ const ApiSettings = ({ apiKey }: { apiKey: string }) => {
 
     const [nameInput, setNameInput] = useState<string>("");
 
-    const apiData: IAPI | undefined = GetApiData({ apiKey });
+    const apiData: IAPI | undefined = GetApiData({ botKey });
     useEffect(() => {
         if (apiData) {
             setAllowedSites(apiData.allowedSites)
@@ -23,12 +23,12 @@ const ApiSettings = ({ apiKey }: { apiKey: string }) => {
     }, [apiData])
 
     const editApiData = (query: string, newData: any) => {
-        axios.post("http://localhost:5000/api/edit-api-data", { query, newData, apiKey })
+        axios.post("http://localhost:5000/api/edit-bot-data", { query, newData, botKey })
     };
 
     //editing context data requires a bit more complex saving into the db
     const editContextData = (query: string, newData: any) => {
-        axios.post("http://localhost:5000/api/edit-context-data", { query, newData, apiKey })
+        axios.post("http://localhost:5000/api/edit-context-data", { query, newData, botKey })
             .then(() => {
                 console.log("saved");
             })
@@ -66,7 +66,7 @@ const ApiSettings = ({ apiKey }: { apiKey: string }) => {
 
     return (
         <div>
-            <p>{apiKey}</p>
+            <p>{botKey}</p>
 
             <div>
                 <p>Context</p>

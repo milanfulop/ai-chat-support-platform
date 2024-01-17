@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import IAPI from "../types/Api";
-const GetApiData = ({ apiKey }: { apiKey: string }) => {
-    const [apiData, setApiData] = useState<IAPI>();
+import IAPI from "../types/Bot";
+const GetBotData = ({ botKey }: { botKey: string }) => {
+    const [botData, setBotData] = useState<IAPI>();
 
     useEffect(() => {
         const getApiData = async () => {
-            axios.post("http://localhost:5000/api/get-api-data", { apiKey })
+            axios.post("http://localhost:5000/api/get-bot-data", { botKey })
                 .then((res) => {
-                    setApiData(res.data);
+                    setBotData(res.data);
                 })
                 .catch((err) => {
                     console.log(err);
@@ -18,7 +18,7 @@ const GetApiData = ({ apiKey }: { apiKey: string }) => {
         getApiData();
     }, []);
 
-    return apiData;
+    return botData;
 }
 
-export default GetApiData;
+export default GetBotData;

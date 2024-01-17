@@ -5,7 +5,7 @@ import { Document } from "langchain/document";
 import { CharacterTextSplitter } from "langchain/text_splitter";
 
 const editContextData = async (req: Request, res: Response) => {
-    const { newData, apiKey } = req.body;
+    const { newData, botKey } = req.body;
 
     const docs = new Document({ pageContent: newData });
 
@@ -15,7 +15,7 @@ const editContextData = async (req: Request, res: Response) => {
     });
 
     const documents = await splitter.splitDocuments([docs]);
-    await Bot.findOneAndUpdate({ botKey: apiKey }, { context: documents })
+    await Bot.findOneAndUpdate({ botKey: botKey }, { context: documents })
 }
 
 export default editContextData;

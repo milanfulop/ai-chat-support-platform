@@ -1,6 +1,6 @@
-const createNewApi = async () => {
+const createNewBot = async () => {
     try {
-        const response = await fetch('http://localhost:5000/api/create-new-api', {
+        const response = await fetch('http://localhost:5000/api/create-new-bot', {
             method: 'POST',
             credentials: 'include',
             headers: {
@@ -12,4 +12,4 @@ const createNewApi = async () => {
     }
 };
 
-export default createNewApi;
+export default createNewBot;
