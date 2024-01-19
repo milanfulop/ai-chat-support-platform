@@ -1,8 +1,8 @@
-const apiList = () => {
+const BotList = () => {
     return (
         <div>
 
         </div>
     )
 }
-export default apiList
+export default BotList

@@ -4,17 +4,16 @@ import checkAuthentication from '../../utils/checkAuthentication';
 import GetUserData from '../../utils/getUserData';
 import createNewBot from '../../utils/createNewBot';
 
-import ApiSettings from './botSettings';
+import BotInspection from './item/botInspection';
 
 const Dashboard = () => {
-    //if this is true, the rest of the dashboard will disappear
-    const [isEditingApiSettings, setEditingApiSettings] = useState<boolean>(false);
-    const [editingApiKey, setEditingApiKey] = useState<string>("");
+    //if this isn't empty, the rest of the dashboard will disappear and only the selected bot tab will show.
+    const [inspectingBotKey, setInspectingBotKey] = useState<string>("");
 
     const isAuthenticated = checkAuthentication(true);
     const userData = GetUserData();
 
-    if (!isEditingApiSettings) {
+    if (inspectingBotKey == "") {
         return (
             <div>
                 <h1>dahsboard {isAuthenticated ? "authed" : "unauthed"}</h1>
@@ -26,8 +25,7 @@ const Dashboard = () => {
                             {userData.bots.map((data, index) => (
                                 <li key={index}>
                                     <p onClick={() => {
-                                        setEditingApiSettings(true);
-                                        setEditingApiKey(data)
+                                        setInspectingBotKey(data)
                                     }}>{data}</p>
                                 </li>
                             ))}
@@ -41,7 +39,7 @@ const Dashboard = () => {
     }
     else {
         return (
-            <ApiSettings botKey={editingApiKey} />
+            <BotInspection botKey={inspectingBotKey} />
         )
     }
 };

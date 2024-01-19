@@ -1,9 +1,9 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import GetApiData from "../../utils/getBotData";
-import IAPI from "../../types/Bot";
+import GetApiData from "../../../../utils/getBotData";
+import IAPI from "../../../../types/Bot";
 
-const ApiSettings = ({ botKey }: { botKey: string }) => {
+const BotSettings = ({ botKey }: { botKey: string }) => {
     const [allowedSites, setAllowedSites] = useState<String[]>([]);
     const [allowedSiteInput, setAllowedSiteInput] = useState<string>("");
 
@@ -94,4 +94,4 @@ const ApiSettings = ({ botKey }: { botKey: string }) => {
     );
 };
 
-export default ApiSettings;
+export default BotSettings;
