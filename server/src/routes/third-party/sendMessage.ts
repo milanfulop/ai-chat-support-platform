@@ -24,31 +24,36 @@ const sendMessage = async (req: Request, res: Response) => {
     if (!document)
         return "Bot not found";
 
-    //imports the context from the database
-    const contextArray: Document<string>[] = (document.context || []).map(context => ({
-        pageContent: context.pageContent,
-        metadata: {
-            loc: context.metadata.loc,
-        },
-    }));
-
     const botName = document.botName;
 
-    const embeddings = new OpenAIEmbeddings();
-    const vectorStore = await FaissStore.fromDocuments(contextArray, embeddings);
+    try {
+        //imports the context from the database
+        const contextArray: Document<string>[] = (document.context || []).map(context => ({
+            pageContent: context.pageContent,
+            metadata: {
+                loc: context.metadata.loc,
+            },
+        }));
 
-    const model = new OpenAI({ temperature: 0 });
-    const chain = new RetrievalQAChain({
-        combineDocumentsChain: loadQAStuffChain(model),
-        retriever: vectorStore.asRetriever(),
-        returnSourceDocuments: true,
-    });
+        const embeddings = new OpenAIEmbeddings();
+        const vectorStore = await FaissStore.fromDocuments(contextArray, embeddings);
 
-    const response = await chain.call({
-        query: prompt,
-    });
+        const model = new OpenAI({ temperature: 0 });
+        const chain = new RetrievalQAChain({
+            combineDocumentsChain: loadQAStuffChain(model),
+            retriever: vectorStore.asRetriever(),
+            returnSourceDocuments: true,
+        });
 
-    res.json({ botName, message: response.text });
+        const response = await chain.call({
+            query: prompt,
+        });
+
+        res.json({ botName, message: response.text });
+    }
+    catch (err) {
+        res.json({ botName, message: "Error on the server side" });
+    }
 }
 
 export default sendMessage;

@@ -13,7 +13,7 @@ const Dashboard = () => {
     const isAuthenticated = checkAuthentication(true);
     const userData = GetUserData();
 
-    if (inspectingBotKey == "") {
+    if (inspectingBotKey === "") {
         return (
             <div>
                 <h1>dahsboard {isAuthenticated ? "authed" : "unauthed"}</h1>
@@ -22,11 +22,11 @@ const Dashboard = () => {
                 {userData ? (
                     <div>
                         <ul>
-                            {userData.bots.map((data, index) => (
+                            {userData.botIDs.map((id, index) => (
                                 <li key={index}>
                                     <p onClick={() => {
-                                        setInspectingBotKey(data)
-                                    }}>{data}</p>
+                                        setInspectingBotKey(id)
+                                    }}>{id.substring(0, 25)}...</p>
                                 </li>
                             ))}
                         </ul>
@@ -39,7 +39,10 @@ const Dashboard = () => {
     }
     else {
         return (
-            <BotInspection botKey={inspectingBotKey} />
+            <div>
+                <button onClick={() => setInspectingBotKey("")}>Back</button>
+                <BotInspection botKey={inspectingBotKey} />
+            </div>
         )
     }
 };

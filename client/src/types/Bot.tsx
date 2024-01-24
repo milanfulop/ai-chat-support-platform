@@ -1,4 +1,4 @@
-interface IAPI {
+interface IBot {
     botKey: string
     userId: string
     allowedSites: [string]
@@ -10,4 +10,4 @@ interface IAPI {
         };
     }];
 }
-export default IAPI;
+export default IBot;
