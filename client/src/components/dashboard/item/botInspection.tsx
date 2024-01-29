@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react";
-import BotSettings from "./tabs/botSettings";
+import { useState } from "react";
 import TabManager from "./tabManager";
 
 enum Tabs { "Settings", "Statistics" };

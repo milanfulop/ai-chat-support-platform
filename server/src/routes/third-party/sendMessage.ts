@@ -41,7 +41,7 @@ const sendMessage = async (req: Request, res: Response) => {
         const model = new OpenAI({ temperature: 0 });
         const chain = new RetrievalQAChain({
             combineDocumentsChain: loadQAStuffChain(model),
-            retriever: vectorStore.asRetriever(),
+            retriever: vectorStore.asRetriever({ k: 1 }),
             returnSourceDocuments: true,
         });
 
@@ -52,7 +52,7 @@ const sendMessage = async (req: Request, res: Response) => {
         res.json({ botName, message: response.text });
     }
     catch (err) {
-        res.json({ botName, message: "Error on the server side" });
+        res.json({ botName, message: `Error on the server side + ${err}` });
     }
 }
 

@@ -1,49 +1,41 @@
 import { useState } from 'react';
-
-import checkAuthentication from '../../utils/checkAuthentication';
 import GetUserData from '../../utils/getUserData';
 import createNewBot from '../../utils/createNewBot';
-
 import BotInspection from './item/botInspection';
+import './dashboard.css';
 
 const Dashboard = () => {
-    //if this isn't empty, the rest of the dashboard will disappear and only the selected bot tab will show.
     const [inspectingBotKey, setInspectingBotKey] = useState<string>("");
-
-    const isAuthenticated = checkAuthentication(true);
     const userData = GetUserData();
 
     if (inspectingBotKey === "") {
         return (
-            <div>
-                <h1>dahsboard {isAuthenticated ? "authed" : "unauthed"}</h1>
-                <button onClick={createNewBot}>xd</button>
+            <div className="container">
+                <h1 className="heading">Dashboard</h1>
+                <button className="button" onClick={createNewBot}>New Bot</button>
 
                 {userData ? (
                     <div>
-                        <ul>
+                        <ul className="botList">
                             {userData.botIDs.map((id, index) => (
-                                <li key={index}>
-                                    <p onClick={() => {
-                                        setInspectingBotKey(id)
-                                    }}>{id.substring(0, 25)}...</p>
+                                <li className="botListItem" key={index}>
+                                    <p onClick={() => setInspectingBotKey(id)}>{id.substring(0, 25)}...</p>
                                 </li>
                             ))}
                         </ul>
                     </div>
                 ) : (
-                    <p>Loading user data...</p>
+                    <p className="loader">Loading user data...</p>
                 )}
             </div>
         );
-    }
-    else {
+    } else {
         return (
-            <div>
-                <button onClick={() => setInspectingBotKey("")}>Back</button>
+            <div className="container">
+                <button className="backButton" onClick={() => setInspectingBotKey("")}>Back</button>
                 <BotInspection botKey={inspectingBotKey} />
             </div>
-        )
+        );
     }
 };
 

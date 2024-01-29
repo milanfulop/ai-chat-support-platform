@@ -1,0 +1,37 @@
+.container {
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+p {
+    font-weight: bold;
+}
+
+textarea,
+input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #3498db;
+    color: #fff;
+    cursor: pointer;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 5px;
+}

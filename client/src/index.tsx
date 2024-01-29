@@ -3,10 +3,10 @@ import { Route, Routes, BrowserRouter } from 'react-router-dom';
 
 import './index.css';
 
-import Login from './routes/login';
-import Signup from './routes/signup';
-import Home from './routes/home';
-import Dashboard from './routes/dashboard/dashboard'
+import Login from './components/auth/login';
+import Signup from './components/auth/signup';
+import Home from './components/home';
+import Dashboard from './components/dashboard/dashboard'
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

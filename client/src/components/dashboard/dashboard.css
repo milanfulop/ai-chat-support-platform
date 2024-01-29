@@ -1,0 +1,49 @@
+/* dashboardStyles.css */
+
+.container {
+    text-align: center;
+    margin: 50px auto;
+}
+
+.heading {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.button {
+    margin: 10px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #3498db;
+    color: #fff;
+    cursor: pointer;
+}
+
+.botList {
+    list-style: none;
+    padding: 0;
+}
+
+.botListItem {
+    margin: 10px 0;
+}
+
+.botListItem p {
+    cursor: pointer;
+    color: #3498db;
+}
+
+.loader {
+    color: #3498db;
+}
+
+.backButton {
+    margin: 10px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #e74c3c;
+    color: #fff;
+    cursor: pointer;
+}

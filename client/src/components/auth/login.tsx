@@ -21,7 +21,7 @@ export default function Login() {
     const onSubmit = async () => {
         try {
             setLoading(true);
-            const response = await axios.post("http://localhost:5000/api/login", {
+            await axios.post("http://localhost:5000/api/login", {
                 email: email,
                 password: password
             }, {
@@ -29,8 +29,8 @@ export default function Login() {
             });
 
             navigate('/');
-        } catch (error: any) {
-            console.error("Login failed:", error.response.data);
+        } catch (error) {
+            console.error("Login failed:", error);
             setError("Invalid email or password");
         } finally {
             setLoading(false);

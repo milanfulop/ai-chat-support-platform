@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import BotSettings from "./tabs/botSettings";
 import Tabs from './Tabs';
 
