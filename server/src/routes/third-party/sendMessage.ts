@@ -16,7 +16,7 @@ type Document<T> = {
 };
 
 const sendMessage = async (req: Request, res: Response) => {
-    const prompt = "Answer this in first person: " + req.body.chatHistory[req.body.chatHistory.length - 1];
+    const prompt = "Answer this as a human: " + req.body.chatHistory[req.body.chatHistory.length - 1];
 
     const botId = req.query.botId;
 
