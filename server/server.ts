@@ -1,5 +1,4 @@
 require('dotenv').config();
-import { Request, Response } from 'express';
 
 import app from './src/configs/app.config';
 import api from './src/configs/api.config';

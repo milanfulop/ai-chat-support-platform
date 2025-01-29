@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const CheckAuthentication = (redirect: Boolean) => {
-    const [authenticated, setAuthenticated] = useState<Boolean>(false);
+    const [authenticated, setAuthenticated] = useState<"unauthenticated" | "loading" | "authenticated">("loading");
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -18,18 +18,18 @@ const CheckAuthentication = (redirect: Boolean) => {
 
                 if (response.ok) {
                     const data = await response.json();
-                    setAuthenticated(data.isAuthenticated);
+                    setAuthenticated(data.isAuthenticated ? "authenticated" : "unauthenticated");
                     if (!data.isAuthenticated && redirect)
                         navigate('/login');
                 } else {
-                    setAuthenticated(false);
+                    setAuthenticated("unauthenticated");
 
                     if (redirect)
                         navigate('/login');
                 }
             } catch (error) {
                 console.error('Error checking authentication:', error);
-                setAuthenticated(false);
+                setAuthenticated("unauthenticated");
 
                 if (redirect)
                     navigate('/login');

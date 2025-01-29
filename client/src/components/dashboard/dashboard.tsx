@@ -8,6 +8,10 @@ const Dashboard = () => {
     const [inspectingBotKey, setInspectingBotKey] = useState<string>("");
     const userData = GetUserData();
 
+    if(!userData) {
+        return <div>sign in</div>
+    }
+
     if (inspectingBotKey === "") {
         return (
             <div className="container">

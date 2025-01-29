@@ -1,10 +1,11 @@
 import BotSettings from "./tabs/botSettings";
 import Tabs from './Tabs';
+import IBot from "../../../types/Bot";
 
-const TabManager = ({ botKey, currentTab }: { botKey: string, currentTab: Tabs }) => {
+const TabManager = ({ botData, currentTab }: { botData: IBot, currentTab: Tabs }) => {
     switch (currentTab) {
         case Tabs.Settings:
-            return <BotSettings botKey={botKey} />;
+            return <BotSettings botData={botData} />;
         case Tabs.Statistics:
             return <div>Statistics Content</div>;
         default:
