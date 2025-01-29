@@ -20,7 +20,7 @@ const createNewBot = (req: Request, res: Response) => {
                     { 
                         $push: { 
                             bots: { 
-                                botName: "ChatBot",
+                                botName: "Bot",
                                 botKey: botKey, 
                                 _id: savedBot._id
                             } 

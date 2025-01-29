@@ -33,7 +33,7 @@ const Dashboard = () => {
                             {userData.bots.map((bot, index) => (
                                 <li className="botListItem" key={index}>
                                     <p onClick={() => setInspectingBotKey(bot.botKey)}>
-                                        {bot.botName.substring(0, 25)}...
+                                        {bot.botName.substring(0, 25)}
                                     </p>
                                 </li>
                             ))}
@@ -47,7 +47,7 @@ const Dashboard = () => {
     } else {
         return (
             <div className="container">
-                <button className="backButton" onClick={() => setInspectingBotKey("")}>Back</button>
+                <button className="backButton" onClick={() => {setInspectingBotKey(""); refreshUserData();}}>Back</button>
                 <BotInspection botKey={inspectingBotKey} />
             </div>
         );
