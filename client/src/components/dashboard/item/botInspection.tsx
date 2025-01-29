@@ -19,11 +19,6 @@ const BotInspection = ({ botKey }: { botKey: string }) => {
 
     return (
         <div>
-            <div>
-                <button onClick={() => setCurrentTab(Tabs.Settings)}>Settings</button>
-                <button onClick={() => setCurrentTab(Tabs.Statistics)}>Statistics</button>
-            </div>
-
             <TabManager botData={botData} currentTab={currentTab}></TabManager>
         </div>
     )
