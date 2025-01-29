@@ -17,14 +17,14 @@ const code = `
         display: 'none'
     });
 
-    // message list styles (ul element)
+    // message list styles (ul element) - Changed minHeight to height for consistent scroll area
     const messageList = document.createElement('ul');
     Object.assign(messageList.style, {
         listStyleType: 'none',
         margin: '0',
         padding: '10px',
         overflowY: 'auto',
-        minHeight: '415px',
+        height: '415px',  // Changed from minHeight to height
     });
 
     // user text input element styles

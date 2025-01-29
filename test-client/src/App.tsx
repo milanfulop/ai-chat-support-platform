@@ -1,57 +1,153 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
 
-function App() {
+const WindowWashingCompanyWebsite: React.FC = () => {
+  const containerStyle: React.CSSProperties = {
+    maxWidth: '1200px',
+    margin: '0 auto',
+    padding: '20px',
+  };
+
+  const headerStyle: React.CSSProperties = {
+    textAlign: 'center',
+    backgroundColor: '#4CAF50',
+    color: 'white',
+    padding: '50px 0',
+    borderRadius: '8px',
+  };
+
+  const headerTitleStyle: React.CSSProperties = {
+    fontSize: '3rem',
+    marginBottom: '10px',
+  };
+
+  const headerSubtitleStyle: React.CSSProperties = {
+    fontSize: '1.2rem',
+  };
+
+  const sectionStyle: React.CSSProperties = {
+    margin: '40px 0',
+    padding: '20px',
+    backgroundColor: 'white',
+    borderRadius: '8px',
+    boxShadow: '0 2px 5px rgba(0, 0, 0, 0.1)',
+  };
+
+  const sectionTitleStyle: React.CSSProperties = {
+    fontSize: '2rem',
+    marginBottom: '20px',
+    color: '#4CAF50',
+  };
+
+  const sectionTextStyle: React.CSSProperties = {
+    fontSize: '1.1rem',
+    marginBottom: '20px',
+    lineHeight: '1.8',
+  };
+
+  const serviceListStyle: React.CSSProperties = {
+    listStyleType: 'none',
+  };
+
+  const serviceItemStyle: React.CSSProperties = {
+    fontSize: '1.1rem',
+    marginBottom: '10px',
+    paddingLeft: '20px',
+    position: 'relative',
+  };
+
+  const benefitListStyle: React.CSSProperties = {
+    listStyleType: 'none',
+  };
+
+  const benefitItemStyle: React.CSSProperties = {
+    fontSize: '1.1rem',
+    marginBottom: '10px',
+    paddingLeft: '20px',
+    position: 'relative',
+  };
+
+  const quoteButtonStyle: React.CSSProperties = {
+    padding: '15px 30px',
+    backgroundColor: '#4CAF50',
+    color: 'white',
+    border: 'none',
+    borderRadius: '5px',
+    fontSize: '1.1rem',
+    cursor: 'pointer',
+    transition: 'background-color 0.3s',
+  };
+
+  const footerStyle: React.CSSProperties = {
+    textAlign: 'center',
+    padding: '20px',
+    backgroundColor: '#333',
+    color: 'white',
+    marginTop: '40px',
+  };
+
   return (
-    <div className="App">
-      <p id='loremipsum'>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mollis ullamcorper sem, vel ultricies lectus imperdiet at. Proin et enim dignissim, tincidunt ex nec, auctor erat. In id justo eu orci vulputate tristique. Cras pulvinar erat ut accumsan consectetur. Vestibulum sagittis turpis nisi. Quisque eget dolor faucibus, pellentesque augue ut, interdum nisl. Morbi in sapien cursus neque pellentesque vulputate ac ut dolor. Vivamus dapibus nec lacus eu varius.
+    <div style={containerStyle}>
+      <header style={headerStyle}>
+        <h1 style={headerTitleStyle}>Crystal Clear Windows</h1>
+        <p style={headerSubtitleStyle}>Your trusted partner for spotless, streak-free windows.</p>
+      </header>
 
-        Vestibulum fermentum libero dolor, quis volutpat orci sagittis non. Quisque in arcu id dolor gravida interdum ac at lectus. Suspendisse placerat orci eget nisl consectetur, a viverra velit ullamcorper. Integer iaculis ut tellus quis dictum. Nam eu euismod urna. Pellentesque elementum leo nulla, sed bibendum massa egestas non. Cras posuere leo ac cursus tempus. Donec dapibus dui pulvinar risus tincidunt pharetra. Etiam interdum velit pulvinar metus cursus imperdiet. Morbi scelerisque a sem ac varius. Etiam ipsum nisl, pharetra eu gravida sed, scelerisque nec sem. Maecenas finibus nulla non tortor lobortis aliquet. Donec sapien felis, malesuada non consequat vitae, congue quis nunc. Morbi sit amet commodo nunc. Aenean ut lorem ipsum. Praesent arcu sapien, fringilla sit amet ante ac, porta porta felis.
+      <section style={sectionStyle}>
+        <h2 style={sectionTitleStyle}>About Us</h2>
+        <p style={sectionTextStyle}>
+          At Crystal Clear Windows, we take pride in delivering top-notch window washing services. With years of experience and a dedication to excellence, our team ensures your windows are spotless, streak-free, and gleaming. Whether it's residential or commercial, we’ve got the skills and the equipment to tackle windows of all shapes and sizes.
+        </p>
+      </section>
 
-        Pellentesque nec metus eleifend, semper urna ut, pellentesque dui. Phasellus in leo sit amet eros faucibus tempus dapibus eget ipsum. Mauris accumsan tincidunt ex et aliquet. Aliquam erat volutpat. Fusce quis mauris id velit gravida rhoncus vel vitae magna. Quisque malesuada molestie tellus vitae blandit. Maecenas iaculis dui sed venenatis interdum. Nullam quis risus nisi.
+      <section style={sectionStyle}>
+        <h2 style={sectionTitleStyle}>Our Services</h2>
+        <ul style={serviceListStyle}>
+          <li style={serviceItemStyle}>
+            <strong>Residential Window Washing:</strong> Enjoy crystal-clear views from the comfort of your home.
+          </li>
+          <li style={serviceItemStyle}>
+            <strong>Commercial Window Washing:</strong> Keep your business’s windows spotless and inviting for customers.
+          </li>
+          <li style={serviceItemStyle}>
+            <strong>High-Rise Window Washing:</strong> We specialize in safely and efficiently cleaning windows in high-rise buildings.
+          </li>
+          <li style={serviceItemStyle}>
+            <strong>Screen Cleaning:</strong> We don’t just clean windows; we’ll make sure your screens are fresh and free of dust.
+          </li>
+        </ul>
+      </section>
 
-        Quisque auctor non massa ac suscipit. Nullam et nunc luctus, varius sapien vitae, accumsan sapien. Mauris pulvinar tincidunt nibh, in tristique mauris. Curabitur consectetur ornare nibh, vel dapibus nunc bibendum nec. Quisque egestas turpis a mi tempus, vel sagittis diam viverra. Aliquam dictum turpis a turpis lacinia iaculis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Aliquam vitae erat in felis auctor pellentesque. Nulla pulvinar tincidunt cursus. Vestibulum euismod mauris a molestie hendrerit. Interdum et malesuada fames ac ante ipsum primis in faucibus. Duis feugiat euismod iaculis. Praesent gravida nunc erat.
+      <section style={sectionStyle}>
+        <h2 style={sectionTitleStyle}>Why Choose Us?</h2>
+        <p style={sectionTextStyle}>
+          We understand that you have many choices when it comes to window washing, which is why we go above and beyond to ensure customer satisfaction. Here’s why you should choose us:
+        </p>
+        <ul style={benefitListStyle}>
+          <li style={benefitItemStyle}>Experienced professionals with extensive training and skill.</li>
+          <li style={benefitItemStyle}>Eco-friendly cleaning products that are safe for your family, pets, and the environment.</li>
+          <li style={benefitItemStyle}>Affordable pricing with no hidden fees.</li>
+          <li style={benefitItemStyle}>Flexible scheduling to fit your needs.</li>
+        </ul>
+      </section>
 
-        Maecenas sagittis vulputate iaculis. Morbi tristique, ipsum vitae sollicitudin venenatis, justo tortor luctus nisl, eget scelerisque tellus lectus et risus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Sed odio ipsum, faucibus ut orci at, ullamcorper pellentesque diam. Integer finibus lacus quis egestas molestie. Donec ornare venenatis elit, nec eleifend lorem eleifend non. Maecenas sed eros et arcu hendrerit dictum. Cras urna erat, efficitur sed interdum quis, hendrerit blandit orci. Etiam malesuada turpis vitae elementum suscipit. Nunc vel interdum orci, a blandit mi.
+      <section style={sectionStyle}>
+        <h2 style={sectionTitleStyle}>Get a Free Quote</h2>
+        <p style={sectionTextStyle}>
+          Ready to have your windows sparkling clean? Contact us today for a free, no-obligation quote. We look forward to making your windows shine!
+        </p>
+        <button
+          style={quoteButtonStyle}
+          onClick={() => alert("Requesting a quote...")}
+        >
+          Request a Quote
+        </button>
+      </section>
 
-        Aenean a volutpat justo. Nullam rutrum lobortis odio, vel condimentum tellus lobortis ut. Mauris et felis a libero iaculis tempor. Nullam laoreet lectus lectus, rhoncus porttitor diam tristique vitae. Pellentesque molestie nec erat a elementum. Morbi vitae libero felis. Nam consequat lorem eu massa faucibus viverra. Sed in vulputate diam. Donec imperdiet condimentum lorem, eu finibus nibh elementum vel. Donec nisl sapien, euismod eu lacus quis, tristique sagittis nibh. Nunc bibendum quis dui eleifend rutrum.
-
-        Integer fringilla dolor quis enim gravida tempus id euismod tellus. Vestibulum vitae cursus orci. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam id semper magna. Pellentesque metus eros, pharetra at urna eu, ultricies ultrices ante. Aenean eget nibh ipsum. Quisque eget mauris sagittis, rutrum purus a, auctor mi.
-
-        Vivamus ut metus et est posuere suscipit at at nunc. Nulla scelerisque quam in nunc ultricies, vitae auctor ipsum porttitor. Sed dapibus aliquam justo, vel laoreet augue faucibus eu. Quisque lacinia, mauris vel ultricies ultrices, neque sapien viverra arcu, vel luctus nibh sem sed arcu. Quisque ultrices placerat velit. Curabitur at posuere odio. Cras eleifend, risus ac dictum pretium, leo eros condimentum lorem, non fringilla ipsum orci sed est. Aenean vitae bibendum neque, sit amet blandit ex. Proin ultricies elit risus, et faucibus orci laoreet at.
-
-        Fusce placerat lectus arcu, vitae congue augue varius in. Praesent a maximus ex. Pellentesque ut ornare nisl. In convallis egestas sapien, consequat ultrices dolor elementum at. Morbi vel faucibus libero. Sed euismod auctor ex quis mollis. Curabitur eu vestibulum nisl. Nam maximus quam ac quam tincidunt bibendum. Donec sagittis, nisi quis molestie tincidunt, nibh purus ullamcorper magna, at viverra arcu erat non orci. Nulla vitae sodales risus, et pharetra ex. Suspendisse suscipit nec nunc ut vulputate. In aliquet viverra interdum. Duis at hendrerit est. Morbi in pharetra nisl. In dignissim id nulla id rhoncus.
-
-        Praesent sit amet lacus auctor, pretium nisl nec, blandit nisl. Proin pretium tincidunt nunc nec dictum. Donec fringilla cursus commodo. Ut convallis sapien bibendum sapien feugiat, vel faucibus magna scelerisque. Cras a nisi est. Fusce a aliquet felis, eu porttitor ex. Maecenas arcu diam, malesuada in commodo a, bibendum nec orci. Praesent ornare pulvinar lectus eget tempor. Vivamus facilisis nec augue ac dapibus. Integer laoreet, dui euismod interdum viverra, leo erat vulputate quam, et mattis elit turpis non justo. Pellentesque arcu odio, aliquam non maximus in, aliquam et diam. Mauris eget lacinia lectus. Nam tempor, tortor sit amet mollis lobortis, magna lorem pellentesque lacus, vitae dapibus mi magna nec est.
-
-        Nullam ac tortor nec tellus elementum commodo. Duis vehicula blandit felis, a lacinia tortor vestibulum sed. Suspendisse potenti. Maecenas ut eleifend tortor. Suspendisse congue gravida libero, et pellentesque dui condimentum eu. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec lobortis a dui id sollicitudin. Proin elementum enim sed ante tempor dignissim. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec finibus ligula ante, ut ornare nunc accumsan luctus. Duis ante leo, posuere eget gravida at, consequat non nulla. Mauris auctor eget augue sit amet posuere.
-
-        Vivamus id nunc a mi elementum scelerisque. Cras fringilla, ex non cursus volutpat, lectus lacus porttitor purus, a volutpat augue dui nec ligula. Suspendisse ullamcorper diam non tellus consectetur, eleifend luctus libero suscipit. Vestibulum consequat commodo ipsum, ac semper dui. Nullam vulputate scelerisque nibh ut facilisis. Etiam sit amet dui erat. Etiam sit amet lacinia nisl. Pellentesque vitae ligula arcu.
-
-        Vivamus nec finibus lorem, non sollicitudin turpis. Pellentesque sit amet orci sed ligula imperdiet fringilla ac vel libero. Sed quis tincidunt nibh. Fusce ornare sem sed leo lacinia ullamcorper. Pellentesque id sem mollis, consectetur mauris eu, lobortis mauris. Nulla aliquam, lectus sed ornare ullamcorper, nisi erat venenatis erat, vitae finibus nulla massa at est. Sed sodales nibh non vehicula iaculis. Vestibulum sagittis massa mauris, eu tristique dolor viverra sed. In egestas, arcu eget pellentesque suscipit, ipsum justo sagittis nibh, non gravida lectus justo vitae orci. Cras ultrices dignissim turpis, sed tristique erat porttitor nec. Duis faucibus velit eu dolor dictum consequat.
-
-        Aenean pretium sodales sagittis. Phasellus a ligula non nulla efficitur sollicitudin eu id augue. Phasellus in hendrerit orci. Integer ut venenatis dui, et molestie felis. Nunc eu nulla nibh. Nunc vehicula dapibus arcu, luctus posuere lacus. Phasellus lacinia diam quis quam luctus dignissim. Nunc ut purus commodo, dapibus elit vel, laoreet risus. Quisque eget nulla eu magna dignissim luctus. Cras et velit mauris. Ut nec tincidunt urna, eu elementum libero. Duis bibendum nulla velit, sit amet luctus purus suscipit vitae. Integer pulvinar aliquam magna. Aliquam rutrum purus est, eu convallis eros lacinia eu. Duis quis nisl faucibus, iaculis tortor sed, molestie nisl.
-
-        Nullam consequat in eros id tincidunt. Suspendisse ipsum tellus, aliquet ut tortor vitae, mollis maximus ex. Vivamus ac quam at lorem aliquam lacinia. Integer luctus eleifend neque, nec iaculis justo consectetur a. Donec aliquam suscipit odio mollis posuere. Vestibulum quis libero sit amet leo consectetur porttitor. Proin a nunc ornare, luctus massa a, fringilla est. Nullam bibendum neque sed lacus cursus gravida. Integer sed sapien efficitur, dictum elit sit amet, pulvinar mi. Vivamus placerat rutrum tellus rhoncus varius.
-
-        Phasellus ut ex et nibh ornare vehicula quis non neque. Vivamus sagittis in sem vitae eleifend. Proin a blandit ex. Phasellus pretium risus magna, id lacinia libero finibus et. Ut pulvinar gravida odio, non tristique elit faucibus eget. Nunc ultrices neque non nisl fringilla efficitur. Pellentesque dictum tincidunt justo auctor maximus. In auctor porta auctor. Morbi et molestie erat. Donec a eleifend ligula. Pellentesque sollicitudin nisi et diam viverra, at cursus risus consequat. Morbi quis odio vulputate, euismod enim in, elementum tellus. Fusce luctus suscipit ipsum vel tristique. Morbi fringilla quis lectus et scelerisque. Maecenas eu ante vitae tellus suscipit venenatis eu nec ante.
-
-        Aliquam ac porta eros, ut sagittis tellus. Nunc et lorem tortor. Morbi rutrum, nulla a pharetra rutrum, ex mi interdum enim, vitae consequat nisi est eget leo. Donec non aliquam elit, eget ultricies mauris. Sed elit nisi, varius sed elit sed, rhoncus venenatis magna. Etiam semper ante tempus metus eleifend, id varius mauris gravida. Nunc non porttitor leo, non dignissim ipsum. Suspendisse ornare vel nisl sit amet pulvinar.
-
-        Proin mattis congue arcu, nec vehicula mauris blandit et. Sed at commodo nisi, ut vehicula lorem. In et rutrum dolor. Pellentesque tellus est, sodales sit amet feugiat ut, auctor sed orci. Proin pulvinar eros justo, ut rutrum lorem lobortis hendrerit. Morbi ornare gravida facilisis. Mauris a ex sit amet enim tincidunt luctus. Nulla cursus, velit nec mollis hendrerit, mi est fringilla velit, ac suscipit tellus quam quis mi. Nunc lacus risus, gravida sed ultrices ut, consectetur et nunc.
-
-        Aenean ligula orci, dictum non neque et, iaculis convallis eros. Aliquam erat volutpat. Praesent interdum ligula tortor, non rhoncus elit consequat ut. Suspendisse dictum condimentum turpis. Mauris eget odio at dui semper aliquam. Nam aliquet suscipit tellus. Morbi tempus ante ac tortor commodo, sed luctus lectus accumsan.
-
-        Phasellus velit felis, ornare et velit in, viverra luctus quam. Donec pretium quam eu enim vestibulum fermentum. Praesent at odio ac tortor feugiat consectetur at eget mi. Proin nec porta magna. Maecenas dictum massa consectetur tortor facilisis imperdiet. Nulla facilisi. Phasellus pretium felis in urna volutpat, non semper enim laoreet. Morbi varius pretium accumsan. Phasellus dictum maximus ultricies.
-
-        Integer mi sem, faucibus vitae tincidunt pulvinar, placerat ut massa. Sed a ligula felis. Vivamus ut cursus diam, quis eleifend magna. Fusce sit amet enim ornare, volutpat neque ac, iaculis turpis. Vivamus vestibulum arcu quis pretium posuere. Mauris aliquet blandit sollicitudin. Donec vel venenatis lacus. Donec laoreet, urna sit amet fermentum lacinia, justo arcu imperdiet felis, at blandit est odio quis turpis.
-
-        Nunc quam erat, venenatis sit amet elit a, euismod sollicitudin ex. Suspendisse euismod mi vel magna ultricies euismod. Integer sed lacinia ex. Phasellus pellentesque, augue vel volutpat vehicula, magna velit bibendum elit, sed sollicitudin mauris quam auctor dui. Morbi in odio felis. Phasellus vel ex est. Mauris auctor vel tellus non finibus. Cras at ex elementum, sagittis elit non, gravida lacus. Nam nunc nisi, semper sit amet tincidunt suscipit, porttitor eu leo. Cras turpis nisi, malesuada semper sapien sed, fringilla interdum lorem. Ut mollis quis ante et eleifend. In tristique est elit, eu laoreet justo interdum vel. Curabitur auctor suscipit magna, vitae pulvinar ante sodales a. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
-      </p>
+      <footer style={footerStyle}>
+        <p>&copy; 2025 Crystal Clear Windows. All rights reserved.</p>
+      </footer>
     </div>
   );
-}
+};
 
-export default App;
+export default WindowWashingCompanyWebsite;
