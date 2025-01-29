@@ -11,7 +11,7 @@ const Dashboard = () => {
     if(!userData) {
         return <div>sign in</div>
     }
-
+    
     if (inspectingBotKey === "") {
         return (
             <div className="container">
@@ -21,9 +21,9 @@ const Dashboard = () => {
                 {userData ? (
                     <div>
                         <ul className="botList">
-                            {userData.botIDs.map((id, index) => (
+                            {userData.bots.map((bot, index) => (
                                 <li className="botListItem" key={index}>
-                                    <p onClick={() => setInspectingBotKey(id)}>{id.substring(0, 25)}...</p>
+                                    <p onClick={() => setInspectingBotKey(bot.botKey)}>{bot.botName.substring(0, 25)}...</p>
                                 </li>
                             ))}
                         </ul>

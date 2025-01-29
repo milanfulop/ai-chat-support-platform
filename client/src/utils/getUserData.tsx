@@ -20,8 +20,11 @@ const GetUserData = () => {
                     const _userData: IUser = {
                         id: data._id,
                         email: data.email,
-                        botIDs: data.bots
-                    }
+                        bots: data.bots.map((bot: { botName: string; botKey: string }) => ({
+                            botName: bot.botName,
+                            botKey: bot.botKey
+                        }))
+                    };                    
 
                     setUserData(_userData);
                 }

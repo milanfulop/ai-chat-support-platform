@@ -1,5 +1,5 @@
 import BotSettings from "./tabs/botSettings";
-import Tabs from './Tabs';
+import Tabs from '../../../types/Tabs';
 import IBot from "../../../types/Bot";
 
 const TabManager = ({ botData, currentTab }: { botData: IBot, currentTab: Tabs }) => {
